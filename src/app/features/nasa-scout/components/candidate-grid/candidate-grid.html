@@ -1,0 +1,14 @@
+<div class="candidate-grid">
+  <ag-grid-angular
+    [theme]="theme"
+    [rowData]="rowData()"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [quickFilterText]="quickFilterText()"
+    [rowSelection]="rowSelection"
+    (selectionChanged)="onSelectionChanged($event)"
+    [pagination]="pagination"
+    [paginationPageSize]="paginationPageSize"
+    [paginationPageSizeSelector]="paginationPageSizeSelector"
+  />
+</div>

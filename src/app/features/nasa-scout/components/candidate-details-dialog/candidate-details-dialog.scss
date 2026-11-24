@@ -1,0 +1,42 @@
+.candidate-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail-section {
+  h3 {
+    margin: 0 0 14px;
+    font-size: 16px;
+  }
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+  }
+
+  span {
+    color: #64748b;
+    font-size: 13px;
+  }
+
+  strong {
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

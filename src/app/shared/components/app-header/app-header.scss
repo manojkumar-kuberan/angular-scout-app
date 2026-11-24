@@ -1,0 +1,36 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.app-brand {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+
+  a {
+    color: #475569;
+    text-decoration: none;
+    font-weight: 500;
+
+    &.active {
+      color: #2563eb;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    padding: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}

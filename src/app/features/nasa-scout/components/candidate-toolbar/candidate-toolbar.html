@@ -1,0 +1,16 @@
+<div class="dashboard-toolbar">
+  <div class="search-field">
+    <label for="candidate-search">Search candidates</label>
+    <input
+      id="candidate-search"
+      type="search"
+      placeholder="Search by object name, rating, MOID..."
+      [value]="searchText()"
+      (input)="searchTextChange.emit($any($event.target).value)"
+    />
+  </div>
+
+  <button type="button" (click)="viewDetails.emit()" [disabled]="!candidateSelected()">
+    View Details
+  </button>
+</div>

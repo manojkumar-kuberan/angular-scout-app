@@ -1,0 +1,54 @@
+<section class="dashboard">
+  <div class="dashboard-header">
+    <h1>NASA Scout Dashboard</h1>
+
+    <button
+      type="button"
+      (click)="scoutStore.loadScoutData()"
+      [disabled]="scoutStore.loading()"
+      aria-label="Refresh NASA Scout data"
+    >
+      {{ scoutStore.loading() ? 'Refreshing...' : 'Refresh' }}
+    </button>
+  </div>
+
+  @if (scoutStore.loading()) {
+    <p role="status">Loading NASA Scout data...</p>
+  }
+
+  @if (scoutStore.error(); as error) {
+    <p role="alert">{{ error }}</p>
+  }
+
+  @if (!scoutStore.loading() && !scoutStore.error()) {
+    @if (scoutStore.hasCandidates()) {
+      <div class="dashboard-summary">
+        <h2>Total Candidates: {{ scoutStore.count() }}</h2>
+      </div>
+
+      <app-candidate-toolbar
+        [searchText]="searchText()"
+        [candidateSelected]="!!selectedCandidate()"
+        (searchTextChange)="searchText.set($event)"
+        (viewDetails)="showCandidateDetails()"
+      />
+
+      <app-candidate-grid
+        [rowData]="scoutStore.candidates()"
+        [quickFilterText]="searchText()"
+        (selectedCandidateChange)="selectedCandidate.set($event)"
+      />
+    } @else {
+      <div class="empty-state" role="status">
+        <h2>No candidates found</h2>
+        <p>There are currently no asteroid candidates available.</p>
+      </div>
+    }
+  }
+</section>
+
+<app-candidate-details-dialog
+  [candidate]="selectedCandidate()"
+  [visible]="detailsVisible()"
+  (visibleChange)="detailsVisible.set($event)"
+/>

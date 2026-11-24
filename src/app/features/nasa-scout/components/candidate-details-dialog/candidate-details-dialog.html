@@ -1,0 +1,116 @@
+<p-dialog
+  [visible]="visible()"
+  (visibleChange)="visibleChange.emit($event)"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: 'min(900px, 95vw)' }"
+  [breakpoints]="{ '768px': '95vw' }"
+  [header]="candidate()?.objectName ?? 'Candidate Details'"
+>
+  @if (candidate(); as candidate) {
+    <div class="candidate-details">
+      <section class="detail-section">
+        <h3>Object and Observation Details</h3>
+
+        <div class="detail-grid">
+          <div>
+            <span>Object Name</span><strong>{{ candidate.objectName }}</strong>
+          </div>
+          <div>
+            <span>Number of Observations</span><strong>{{ candidate.nObs }}</strong>
+          </div>
+          <div>
+            <span>Observation Arc</span><strong>{{ candidate.arc }}</strong>
+          </div>
+          <div>
+            <span>RMS</span><strong>{{ candidate.rmsN }}</strong>
+          </div>
+          <div>
+            <span>Absolute Magnitude</span><strong>{{ candidate.H }}</strong>
+          </div>
+          <div>
+            <span>Visual Magnitude</span><strong>{{ candidate.Vmag }}</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <h3>Orbit and Close Approach</h3>
+
+        <div class="detail-grid">
+          <div>
+            <span>MOID</span><strong>{{ candidate.moid }}</strong>
+          </div>
+          <div>
+            <span>Close Approach Distance</span>
+            <strong>{{ candidate.caDist ?? 'Not available' }}</strong>
+          </div>
+          <div>
+            <span>V Infinity</span>
+            <strong>{{ candidate.vInf ?? 'Not available' }}</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <h3>Hazard and Quality Scores</h3>
+
+        <div class="detail-grid">
+          <div>
+            <span>Rating</span><strong>{{ candidate.rating }}</strong>
+          </div>
+          <div>
+            <span>NEO Score</span><strong>{{ candidate.neoScore }}</strong>
+          </div>
+          <div>
+            <span>PHA Score</span><strong>{{ candidate.phaScore }}</strong>
+          </div>
+          <div>
+            <span>NEO 1km Score</span><strong>{{ candidate.neo1kmScore }}</strong>
+          </div>
+          <div>
+            <span>Geocentric Score</span><strong>{{ candidate.geocentricScore }}</strong>
+          </div>
+          <div>
+            <span>IEO Score</span><strong>{{ candidate.ieoScore }}</strong>
+          </div>
+          <div>
+            <span>Tisserand Score</span><strong>{{ candidate.tisserandScore }}</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <h3>Position and Ephemeris</h3>
+
+        <div class="detail-grid">
+          <div>
+            <span>Right Ascension</span><strong>{{ candidate.ra }}</strong>
+          </div>
+          <div>
+            <span>Declination</span><strong>{{ candidate.dec }}</strong>
+          </div>
+          <div>
+            <span>Elongation</span><strong>{{ candidate.elong }}</strong>
+          </div>
+          <div>
+            <span>Rate</span><strong>{{ candidate.rate }}</strong>
+          </div>
+          <div>
+            <span>Uncertainty</span><strong>{{ candidate.unc }}</strong>
+          </div>
+          <div>
+            <span>Uncertainty P1</span><strong>{{ candidate.uncP1 }}</strong>
+          </div>
+          <div>
+            <span>Ephemeris Time</span><strong>{{ candidate.tEphem }}</strong>
+          </div>
+          <div>
+            <span>Last Run</span><strong>{{ candidate.lastRun }}</strong>
+          </div>
+        </div>
+      </section>
+    </div>
+  }
+</p-dialog>

@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.candidate-grid {
+  width: 100%;
+  height: 560px;
+
+  ag-grid-angular {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
